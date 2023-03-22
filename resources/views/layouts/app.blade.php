@@ -36,6 +36,7 @@
 @endif
 
     <meta name="description" content="" />
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="{{ asset('assets/img/favicon/favicon.ico') }}" />
@@ -59,6 +60,12 @@
     <!-- Vendors CSS -->
     <link rel="stylesheet" href="{{ asset('assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/vendor/libs/apex-charts/apex-charts.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/vendor/libs/sweetalert2/sweetalert2.min.css') }}" />
+    <style>
+        .swal2-container {
+            z-index: 10000;
+        }
+    </style>
 
     <!-- Page Header -->
     @stack('head')
@@ -126,9 +133,37 @@
 
     <!-- Vendors JS -->
     <script src="{{ asset('assets/vendor/libs/apex-charts/apexcharts.js') }}"></script>
+    <script src="{{ asset('assets/vendor/libs/sweetalert2/sweetalert2.min.js') }}"></script>
 
     <!-- Main JS -->
     <script src="{{ asset('assets/js/main.js') }}"></script>
+    <script>
+        $(function() {
+            const Alert = swal.mixin({
+                showConfirmButton: true,
+            });
+
+            @if (session('success'))
+                Alert.fire({
+                    icon: 'success',
+                    title: '{{ session('success') }}',
+                    text: '{{ session('success_message') ?? null }}'
+                });
+            @endif
+
+            @if (session('error'))
+                Alert.fire({
+                    icon: 'error',
+                    title: '{{ session('error') }}',
+                    text: '{{ session('error_message') ?? null }}'
+                });
+            @endif
+
+            $(document).on('select2:open', function() {
+                document.querySelector('.select2-search__field').focus()
+            });
+        });
+    </script>
 
     <!-- Page JS -->
     @stack('scripts')
