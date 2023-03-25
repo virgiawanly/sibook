@@ -72,12 +72,12 @@
             </a>
             <ul class="menu-sub">
                 <li class="menu-item">
-                    <a href="#" class="menu-link">
+                    <a href="{{ route('books.index') }}" class="menu-link">
                         <div data-i18n="Account">Data Buku</div>
                     </a>
                 </li>
                 <li class="menu-item">
-                    <a href="#" class="menu-link">
+                    <a href="{{ route('categories.index') }}" class="menu-link">
                         <div data-i18n="Notifications">Kategori Buku</div>
                     </a>
                 </li>

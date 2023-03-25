@@ -1,0 +1,33 @@
+#layout-menu.bg-menu-theme {
+    background-color: #2b2c40 !important;
+}
+
+#layout-menu .menu-item .menu-link {
+    color: #a3a4cc !important;
+}
+
+#layout-menu .menu-header {
+    font-size: 0.75em !important;
+    letter-spacing: 1px;
+    color: #7071a4 !important;
+}
+
+#layout-menu .menu-header::before {
+    display: none !important;
+}
+
+#layout-menu .menu-inner-shadow {
+    background: linear-gradient(rgba(43, 44, 64, 1), rgba(43, 44, 64, 0));
+}
+
+#layout-menu .menu-item.active .menu-link {
+    background-color: #696cff !important;
+}
+
+#layout-menu .menu-item .menu-link:not(.active):hover {
+    background-color: rgba(124, 125, 182, 0.06);
+}
+
+#layout-menu .menu-item.active .menu-link {
+    color: #ffffff !important;
+}

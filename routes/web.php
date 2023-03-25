@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BookController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
@@ -17,4 +18,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', DashboardController::class);
 
+Route::middleware('ajax')->group(function () {
+    Route::get('categories/select2', [CategoryController::class, 'select2'])->name('categories.select2');
+});
+
+Route::resource('books', BookController::class);
 Route::resource('categories', CategoryController::class);
